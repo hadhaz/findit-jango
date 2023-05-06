@@ -10,7 +10,7 @@ export default function UserProfile() {
           height={100}
           alt='user'
         />
-        <h1 className='font-medium'>Rachel Naragifta</h1>
+        <h1 className='font-medium lg:text-xl xl:text-2xl'>Rachel Naragifta</h1>
       </div>
   );
 }

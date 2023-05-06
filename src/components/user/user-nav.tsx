@@ -1,20 +1,47 @@
+"use client";
+
 import { getUserMenu } from "@/lib/jango";
 import { UserMenu } from "@/lib/jango/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default async function UserNav() {
-  const menu: UserMenu[] = await getUserMenu();
+export default function UserNav() {
+  const [menu, setMenu] = useState<UserMenu[]>([]);
+  const [menuActived, setMenuActived] = useState<string>("Beranda");
+
+  function navHandler(itemName: string) {
+    setMenuActived(itemName);
+  }
+
+  useEffect(() => {
+    const fetchMenu = async () => {
+      const data = await getUserMenu();
+      setMenu(data);
+    };
+    fetchMenu();
+  }, []);
 
   return (
     <nav className='w-[90%] flex justify-center'>
-      <ul className='flex flex-col gap-y-6'>
+      <ul className='flex flex-col gap-y-5 xl:gap-y-8'>
         {menu.map((item: UserMenu) => (
-          <li key={item.name}>
-            <Link href={item.path} className='flex gap-x-3 text-lg'>
-              <Image src={item.icon} alt={item.name} width={20} height={20} />
-              <p>{item.name}</p>
-            </Link>
+          <li
+            key={item.name}
+            onClick={() => navHandler(item.name)}
+            style={{
+              backgroundColor: menuActived === item.name ? "#FEDCBD" : "",
+            }}
+            className='flex cursor-pointer items-center gap-x-3 py-3 px-4 xl:px-7 rounded-xl text-lg lg:text-xl xl:text-2xl'
+          >
+            <Image
+              src={item.icon}
+              alt={item.name}
+              width={20}
+              height={20}
+              className="w-[12%]"
+            />
+            <div className="">{item.name}</div>
           </li>
         ))}
       </ul>
