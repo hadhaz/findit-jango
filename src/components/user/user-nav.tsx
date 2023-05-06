@@ -3,15 +3,18 @@
 import { getUserMenu } from "@/lib/jango";
 import { UserMenu } from "@/lib/jango/types";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function UserNav() {
+  const router = useRouter();
+
   const [menu, setMenu] = useState<UserMenu[]>([]);
   const [menuActived, setMenuActived] = useState<string>("Beranda");
 
-  function navHandler(itemName: string) {
+  function navHandler(itemName: string, path: string) {
     setMenuActived(itemName);
+    router.push(`${path}`);
   }
 
   useEffect(() => {
@@ -22,13 +25,14 @@ export default function UserNav() {
     fetchMenu();
   }, []);
 
+
   return (
     <nav className='w-[90%] flex justify-center'>
       <ul className='flex flex-col gap-y-5 xl:gap-y-8'>
         {menu.map((item: UserMenu) => (
           <li
             key={item.name}
-            onClick={() => navHandler(item.name)}
+            onClick={() => navHandler(item.name, item.path)}
             style={{
               backgroundColor: menuActived === item.name ? "#FEDCBD" : "",
             }}
@@ -39,9 +43,9 @@ export default function UserNav() {
               alt={item.name}
               width={20}
               height={20}
-              className="w-[12%]"
+              className='w-[12%]'
             />
-            <div className="">{item.name}</div>
+            <div className=''>{item.name}</div>
           </li>
         ))}
       </ul>

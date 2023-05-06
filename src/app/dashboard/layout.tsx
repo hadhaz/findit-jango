@@ -9,7 +9,11 @@ export default function DashboardLayout({
   return (
     <section className='flex bg-[#F7F7F7] h-screen'>
       <Sidebar />
-      <Suspense>{children}</Suspense>
+      <Suspense>
+        <div className='bg-[#FEFEFE] overflow-scroll basis-3/4 p-8 lg:p-12 m-8 ml-0 rounded-xl'>
+          {children}
+        </div>
+      </Suspense>
     </section>
   );
 }

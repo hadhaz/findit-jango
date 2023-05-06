@@ -25,17 +25,17 @@ export async function getUserMenu() {
     {
       name: "Arena Latihan",
       icon: "/image-assets/fire.svg",
-      path: "/dashboard",
+      path: "/dashboard/latihan",
     },
     {
       name: "Forum",
       icon: "/image-assets/people.svg",
-      path: "/dashboard",
+      path: "/dashboard/forum",
     },
     {
       name: "Profil",
       icon: "/image-assets/user.svg",
-      path: "/dashboard",
+      path: "/dashboard/profil",
     },
     {
       name: "Keluar",
@@ -88,5 +88,25 @@ export function getFeedbackData() {
       img: "/image-assets/kelancaran.svg",
       score: 9.2,
     },
+  ];
+}
+
+export function getArticles() {
+  return [
+    {
+      title: "Mengatasi Kecemasan Berbicara di Depan Umum",
+      timeRead: 3,
+      detail: "Berbicara di depan umum bisa menjadi hal yang...",
+    },
+    {
+      title: "Pentingnya Kontak Mata saat Berbicara",
+      timeRead: 5,
+      detail: "Kontak mata dapat membantu Anda terhubung...",
+    },
+    {
+      title: "Kekuatan Bercerita dalam Berbicara",
+      timeRead: 3,
+      detail: "Bercerita adalah salah satu cara terbaik untuk menarik audiens...",
+    }
   ];
 }

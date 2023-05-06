@@ -18,7 +18,7 @@ export default async function Navbar() {
           <ul className='hidden md:flex'>
             {menu.map((item: Menu) => (
               <li key={item.name}>
-                <Link href={item.path} className='py-1 px-4'>
+                <Link href={item.path} className='py-1 px-4 text-lg xl:text-xl'>
                   {item.name}
                 </Link>
               </li>

@@ -24,6 +24,11 @@ ChartJs.register(
   RadialLinearScale
 );
 
+interface TicksObject {
+  callback: (val: number, index: number) => string;
+  getLabelForValue: (val: number) => string;
+}
+
 export const options = {
   responsive: true,
   plugins: {
@@ -36,10 +41,14 @@ export const options = {
       angleLines: {
         display: false,
       },
-      suggestedMin: 0,
+      suggestedMin: 20,
       suggestedMax: 100,
+      ticks: {
+        stepSize: 25,
+      },
     },
   },
+  aspectRatio: 2,
 };
 
 const data = {
@@ -53,8 +62,10 @@ const data = {
   datasets: [
     {
       label: "Nilai Kamu",
-      data: [100, 90, 70, 91, 66],
-      //   fill: true,
+      data: [70, 90, 70, 71, 66],
+      //   cubicInterpolationMode: "monotone",
+      //   tension: 0.4,
+      fill: true,
       backgroundColor: "rgba(255, 157, 66, 0.2)",
       borderColor: "rgba(255, 157, 66, 1)",
       pointBackgroundColor: "rgba(255, 157, 66, 1)",
@@ -67,7 +78,7 @@ const data = {
 
 export default function RadarChart() {
   return (
-    <div className='w-2/5'>
+    <div className='w-full'>
       <Radar data={data} options={options} />
     </div>
   );

@@ -20,3 +20,9 @@ export type Feedback = {
   img: string;
   score: number;
 };
+
+export type Article = {
+  title: string;
+  timeRead: number;
+  detail: string;
+};

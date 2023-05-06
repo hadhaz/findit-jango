@@ -34,7 +34,7 @@ export const options = {
 
 export default function LineChart() {
   return (
-    <div className="w-3/5">
+    <div className='w-full'>
       <Line data={getDataSchema()} options={options} />
     </div>
   );

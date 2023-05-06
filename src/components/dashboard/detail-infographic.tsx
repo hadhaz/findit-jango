@@ -16,10 +16,10 @@ export default function DetailInfographic() {
   }, []);
 
   return (
-    <section className='bg-[#FFEDCE] p-3 xl:py-6 xl:px-10 my-12 rounded-2xl'>
+    <section className='bg-[#FFEDCE] p-3 xl:py-8 xl:px-12 my-12 rounded-2xl'>
       <h1 className='font-medium xl:text-2xl'>Feedback Latihan Terakhir</h1>
       <div className='flex gap-x-4 xl:my-6 items-center'>
-        <div className='flex basis-[80%]'>
+        <div className='flex basis-[78%] my-4'>
           {feedbackData.map((item: Feedback) => (
             <div
               key={item.name}
@@ -33,19 +33,19 @@ export default function DetailInfographic() {
                 className='w-1/6'
               />
               <div className='flex flex-col'>
-                <div className='xl:text-lg '>{item.name}</div>
-                <div className='text-2xl xl:text-3xl'>{item.score}/10</div>
+                <div className='text-sm xl:text-base '>{item.name}</div>
+                <div className='text-xl xl:text-3xl'>{item.score}/10</div>
               </div>
             </div>
           ))}
         </div>
-        <button className='bg-[#FF9D42] font-medium py-2 xl:py-3 xl:px-7 px-5 h-fit rounded-xl text-white'>
+        <button className='bg-[#FF9D42] font-medium py-1 xl:py-3 xl:px-7 px-3 h-fit rounded-xl text-white'>
           Latihan Lagi
         </button>
       </div>
-      <div className='bg-white rounded-2xl py-4 px-8'>
-        <h1 className='font-medium xl:text-xl'>Progress Kamu</h1>
-        <div className='w-full flex items-center h-fit'>
+      <div className='bg-white rounded-2xl py-4 xl:px-8 px-4'>
+        <h1 className='font-medium xl:text-xl mb-4'>Progress Kamu</h1>
+        <div className='w-full flex justify-between h-fit'>
           <LineChart />
           <RadarChart />
         </div>
