@@ -18,7 +18,7 @@ export default function ArticleCollection() {
       <h1 className='text-xl xl:text-3xl font-medium'>
         Kiat-Kiat Jadi #Jagoan Public Speaking 👇
       </h1>
-      <div className='flex px-6 gap-x-4 xl:gap-x-9 pt-6 justify-center'>
+      <div className='flex xl:px-6 gap-x-4 xl:gap-x-9 pt-6 justify-center'>
         {articles.map((article: Article) => (
           <div
             key={article.title}
@@ -33,9 +33,9 @@ export default function ArticleCollection() {
             />
             <div className="basis-full">
               <h1 className='font-medium max-w-[95%]'>{article.title}</h1>
-              <h2>Bacaan {article.timeRead} menit</h2>
+              <h2 className="text-sm"><em>Bacaan {article.timeRead} menit</em></h2>
             </div>
-            <p className='mt-6'>{article.detail}</p>
+            <p className='mt-3 xl:mt-6 text-sm'>{article.detail}</p>
           </div>
         ))}
       </div>

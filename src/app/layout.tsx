@@ -9,7 +9,7 @@ const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
-    default: SITE_NAME,
+    default: SITE_NAME || "Jago Ngomong",
     template: `%s | ${SITE_NAME}`,
   },
   description:

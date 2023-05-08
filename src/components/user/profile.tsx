@@ -3,7 +3,7 @@ import UserNav from "./user-nav";
 
 export default function UserProfile() {
   return (
-      <div className='flex flex-col items-center gap-y-2 mb-16'>
+      <div className='flex flex-col items-center gap-y-2 mb-[10%]'>
         <Image
           src='/image-assets/user-photo.png'
           width={100}

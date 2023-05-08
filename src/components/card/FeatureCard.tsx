@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function FeatureCard(feature: Feature) {
   return (
-    <div className='relative basis-1/3 rounded-2xl overflow-hidden'>
+    <div className='relative basis-1/3 rounded-2xl overflow-hidden shadow-xl'>
       <Image
         src={feature.img}
         alt={feature.name}

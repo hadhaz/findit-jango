@@ -22,7 +22,14 @@ const features = [
 
 export default function Feature() {
   return (
-    <section className='bg-[#F5CC86] w-screen flex flex-col items-center -mt-16'>
+    <section className='bg-[#F5CC86] w-screen relative flex flex-col items-center -mt-16'>
+      <Image
+        src='/image-background/feature.svg'
+        width={1920}
+        height={1080}
+        alt='bg curved'
+        className='absolute w-full top-1/4'
+      />
       <h1 className='text-2xl md:text-3xl lg:text-4xl font-medium mb-6 md:mb-8 lg:mb-10 xl:mb-12'>
         Fitur Kami
       </h1>

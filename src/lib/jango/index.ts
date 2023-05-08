@@ -106,7 +106,27 @@ export function getArticles() {
     {
       title: "Kekuatan Bercerita dalam Berbicara",
       timeRead: 3,
-      detail: "Bercerita adalah salah satu cara terbaik untuk menarik audiens...",
-    }
+      detail:
+        "Bercerita adalah salah satu cara terbaik untuk menarik audiens...",
+    },
+  ];
+}
+
+export function getTestimony() {
+  return [
+    {
+      name: "Jessica Bintang",
+      img: "/image-assets/jessica.png",
+      job: "Mahasiswa Universitas Gadjah Mada",
+      testimony:
+        "Fitur-fitur yang disediakan, seperti analisis suara dan feedback dari AI, memungkinkan saya untuk mendapatkan umpan balik tentang cara saya berbicara dan bagaimana saya bisa meningkatkannya.",
+    },
+    {
+      name: "Andi Budiman",
+      img: "/image-assets/andi.png",
+      job: "Sales Manager at GoTo Indonesia",
+      testimony:
+        "Meskipun saya bekerja di bidang pemasaran dan sering harus berbicara di depan umum, saya masih merasa gugup dan terkadang kesulitan dalam mengkomunikasikan ide-ide saya dengan jelas. Namun, dengan aplikasi ini, saya merasa lebih percaya diri dan siap untuk berbicara di depan umum.",
+    },
   ];
 }

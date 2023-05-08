@@ -26,3 +26,10 @@ export type Article = {
   timeRead: number;
   detail: string;
 };
+
+export type Testimony = {
+  name: string;
+  img: string;
+  testimony: string;
+  job: string;
+}
