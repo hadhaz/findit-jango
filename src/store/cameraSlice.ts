@@ -11,8 +11,8 @@ const initialState: CameraState = {
   warning: false,
 };
 
-export const streamSlice = createSlice({
-  name: "stream",
+export const cameraSlice = createSlice({
+  name: "camera",
   initialState,
   reducers: {
     setCameraStart: (state, action: PayloadAction<boolean>) => {
@@ -25,6 +25,6 @@ export const streamSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCameraStart, setCameraWarning } = streamSlice.actions;
+export const { setCameraStart, setCameraWarning } = cameraSlice.actions;
 
-export default streamSlice.reducer;
+export default cameraSlice.reducer;

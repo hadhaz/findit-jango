@@ -2,7 +2,7 @@
 import "regenerator-runtime/runtime";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { use, useCallback, useEffect, useRef, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -10,6 +10,8 @@ import { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setCameraStart, setCameraWarning } from "@/store/cameraSlice";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { addTranscript } from "@/store/transcriptSlice";
 
 export default function Practice() {
   const [videoURL, setVideoURL] = useState<string | null>(null);
@@ -24,10 +26,13 @@ export default function Practice() {
   const [transcript, setTranscript] = useState<string | null>("");
   const [showWarningBrowser, setShowWarningBrowser] = useState<boolean>(true);
   const [showAccessWarning, setShowAccessWarning] = useState<boolean>(false);
+  const [timeStart, setTimeStart] = useState<number>(0);
+  const [timeStop, setTimeStop] = useState<number>(0);
+  const router = useRouter();
 
-  const cameraWarning = useSelector((state: RootState) => state.stream.warning);
+  const cameraWarning = useSelector((state: RootState) => state.camera.warning);
   const cameraStarted = useSelector(
-    (state: RootState) => state.stream.cameraStarted
+    (state: RootState) => state.camera.cameraStarted
   );
   const dispatch = useDispatch();
 
@@ -71,12 +76,14 @@ export default function Practice() {
   }, [dispatch]);
 
   const handleStartRecording = () => {
+    setTimeStart(Date.now());
     setTranscript("");
     resetTranscript();
     setIsRecording(true);
   };
 
   const handleStopRecording = () => {
+    setTimeStop(Date.now());
     setIsRecording(false);
 
     // set delay to stop listening
@@ -123,14 +130,14 @@ export default function Practice() {
     }
   };
 
-  const handleCameraOffClick = () => {
+  const handleCameraOffClick = useCallback(() => {
     if (stream) {
       const tracks = stream.getTracks();
       tracks.forEach(track => track.stop());
       setStream(null);
       dispatch(setCameraStart(false));
     }
-  };
+  }, [dispatch, stream]);
 
   const handleStartCamera = () => {
     if (!stream && !cameraStarted) {
@@ -168,9 +175,25 @@ export default function Practice() {
     }
   }, [chunks]);
 
-  const handleCameraWarning = () => {
-    dispatch(setCameraWarning(false));
+  const analysisHandler = () => {
+    // turn off camera
+    handleCameraOffClick();
+    dispatch(
+      addTranscript({
+        date: Date.now().toLocaleString(),
+        text: transcript ? transcript : "",
+        time: timeStop - timeStart,
+      })
+    );
+    router.push("/dashboard/latihan/hasil");
   };
+
+  useEffect(() => {
+    if (cameraWarning) {
+      handleCameraOffClick();
+      dispatch(setCameraWarning(false));
+    }
+  }, [cameraWarning, handleCameraOffClick, dispatch]);
 
   if (!isMounted)
     return (
@@ -181,24 +204,6 @@ export default function Practice() {
 
   return (
     <div className='relative'>
-      {cameraWarning && (
-        <motion.div
-          animate={{ y: 0 }}
-          initial={{ y: -400 }}
-          className='shadow-lg bg-white z-20 flex flex-col border-2 border-red-500 overflow-hidden justify-center absolute text-black rounded-lg w-full'
-        >
-          <p className='py-2 px-5 font-medium text-lg text-red-600'>Warning!</p>
-          <p className='text-center pt-6 pb-8'>
-            Sepertinya kamu belum mematikan kamera
-          </p>
-          <button
-            onClick={handleCameraWarning}
-            className='bg-red-500 w-full py-2'
-          >
-            Mengerti
-          </button>
-        </motion.div>
-      )}
       {!browserSupportsSpeechRecognition && showWarningBrowser && (
         <motion.div
           animate={{ y: 0 }}
@@ -310,6 +315,7 @@ export default function Practice() {
           <button
             className='p-2 rounded-full bg-slate-200 disabled:cursor-not-allowed'
             disabled={!transcript}
+            onClick={analysisHandler}
           >
             <Image
               src='/image-assets/analysis.svg'

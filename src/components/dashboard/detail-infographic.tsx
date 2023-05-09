@@ -6,14 +6,20 @@ import { Feedback } from "@/lib/jango/types";
 import { getFeedbackData } from "@/lib/jango";
 import Image from "next/image";
 import RadarChart from "./radar-chart";
+import { useRouter } from "next/navigation";
 
 export default function DetailInfographic() {
   const [feedbackData, setFeedbackData] = useState<Feedback[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const data = getFeedbackData();
     setFeedbackData(data);
   }, []);
+
+  const practiceHandler = () => {
+    router.push("/dashboard/latihan");
+  };
 
   return (
     <section className='bg-[#FFEDCE] p-3 xl:py-8 xl:px-12 my-12 rounded-2xl'>
@@ -39,7 +45,10 @@ export default function DetailInfographic() {
             </div>
           ))}
         </div>
-        <button className='bg-[#FF9D42] font-medium py-1 xl:py-3 xl:px-7 px-3 h-fit rounded-xl text-white'>
+        <button
+          onClick={practiceHandler}
+          className='bg-[#FF9D42] font-medium py-1 xl:py-3 xl:px-7 px-3 h-fit rounded-xl text-white'
+        >
           Latihan Lagi
         </button>
       </div>

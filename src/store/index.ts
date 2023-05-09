@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { streamSlice } from "./cameraSlice";
+import cameraSlice from "./cameraSlice";
+import transcriptSlice from "./transcriptSlice";
 
 export const store = configureStore({
   reducer: {
-    stream: streamSlice.reducer,
+    camera: cameraSlice,
+    transcript: transcriptSlice,
   },
 });
 

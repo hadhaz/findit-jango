@@ -1,3 +1,5 @@
+import { FeedbackOverview } from "./types";
+
 export async function getMenu() {
   return [
     {
@@ -127,6 +129,38 @@ export function getTestimony() {
       job: "Sales Manager at GoTo Indonesia",
       testimony:
         "Meskipun saya bekerja di bidang pemasaran dan sering harus berbicara di depan umum, saya masih merasa gugup dan terkadang kesulitan dalam mengkomunikasikan ide-ide saya dengan jelas. Namun, dengan aplikasi ini, saya merasa lebih percaya diri dan siap untuk berbicara di depan umum.",
+    },
+  ];
+}
+
+export function getFeedbackOverview(): FeedbackOverview[] {
+  return [
+    {
+      name: "Rata-rata kecepatan bicara",
+      value: 162,
+      color: "#E0F0FF",
+      unit: "WPM",
+      icon: "/image-assets/pace.svg",
+      suggestion: "Cobalah untuk berbicara lebih lambat",
+      slug: "pace",
+    },
+    {
+      name: "Struktur presentasi",
+      value: "9/10",
+      color: "#93F29D",
+      unit: "/10",
+      icon: "/image-assets/structure.svg",
+      suggestion: null,
+      slug: "structure",
+    },
+    {
+      name: "Kelancaran",
+      value: "8/10",
+      color: "#93F29D",
+      unit: "/10",
+      icon: "/image-assets/depth.svg",
+      suggestion: null,
+      slug: "smoothness",
     },
   ];
 }

@@ -11,16 +11,20 @@ import { setCameraStart, setCameraWarning } from "@/store/cameraSlice";
 
 export default function UserNav() {
   const router = useRouter();
-  const pathname = usePathname();
+  let pathname = usePathname();
   const [menu, setMenu] = useState<UserMenu[]>([]);
   const cameraStart = useSelector(
-    (state: RootState) => state.stream.cameraStarted
+    (state: RootState) => state.camera.cameraStarted
   );
   const dispatch = useDispatch();
 
   function navHandler(path: string) {
-    if (cameraStart && path !== "/dashboard/latihan" && pathname === "/dashboard/latihan") {
-      return dispatch(setCameraWarning(true));
+    if (
+      cameraStart &&
+      path !== "/dashboard/latihan" &&
+      pathname === "/dashboard/latihan"
+    ) {
+      dispatch(setCameraWarning(true));
     }
     router.push(`${path}`);
   }

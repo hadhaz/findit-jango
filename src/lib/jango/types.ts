@@ -32,4 +32,20 @@ export type Testimony = {
   img: string;
   testimony: string;
   job: string;
-}
+};
+
+export type Result = {
+  name: string;
+  value: string | number;
+  color: string;
+};
+
+export type FeedbackOverview = {
+  name: string;
+  value: number | string;
+  color: string;
+  unit: string | null;
+  icon: string;
+  suggestion: string | null;
+  slug: string;
+};

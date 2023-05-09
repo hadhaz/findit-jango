@@ -1,6 +1,6 @@
 import { Feature } from "@/lib/jango/types";
 import Image from "next/image";
-import FeatureCard from "../card/FeatureCard";
+import FeatureCard from "../card/feature-card";
 
 const features = [
   {
