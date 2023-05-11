@@ -54,7 +54,7 @@ export default function UserNav() {
               alt={item.name}
               width={20}
               height={20}
-              className='w-[12%]'
+              className='w-[18%] xl:w-[12%]'
             />
             <div className=''>{item.name}</div>
           </li>

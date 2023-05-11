@@ -49,3 +49,15 @@ export type FeedbackOverview = {
   suggestion: string | null;
   slug: string;
 };
+
+export type QuestLevel = "Pemula" | "Menengah" | "Mahir" | "Expert" | string
+
+
+export type Quest = {
+  questNumber: number;
+  title: string;
+  description: string;
+  progress: number;
+  img: string;
+};
+

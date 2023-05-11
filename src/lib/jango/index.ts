@@ -1,4 +1,4 @@
-import { FeedbackOverview } from "./types";
+import { FeedbackOverview, Quest } from "./types";
 
 export async function getMenu() {
   return [
@@ -25,9 +25,14 @@ export async function getUserMenu() {
       path: "/dashboard",
     },
     {
+      name: "Jango AI",
+      icon: "/image-assets/jangoai.svg",
+      path: "/dashboard/latihan",
+    },
+    {
       name: "Arena Latihan",
       icon: "/image-assets/fire.svg",
-      path: "/dashboard/latihan",
+      path: "/dashboard/quest",
     },
     {
       name: "Forum",
@@ -163,4 +168,123 @@ export function getFeedbackOverview(): FeedbackOverview[] {
       slug: "smoothness",
     },
   ];
+}
+
+export const level = ["Pemula", "Menengah", "Mahir", "Pakar"];
+
+export function getQuestByLevel(level: string): Quest[] {
+  switch (level) {
+    case "Pemula":
+      return [
+        {
+          questNumber: 1,
+          title: "Memperkenalkan Diriku: Perjalanan 2 Menit Menuju Hidupku",
+          description:
+            "Tujuannya adalah untuk membantu peserta merasa nyaman berbicara di depan umum dan memperkenalkan diri mereka dengan lebih baik.",
+          progress: 85,
+          img: "/image-assets/quest-1.png",
+        },
+        {
+          questNumber: 2,
+          title:
+            "Kenangan Yang Terakhir: Berbagi Pengalaman Hidup Anda yang Paling Berkesan",
+          description:
+            "Quest ini bertujuan untuk membantu peserta berlatih menyampaikan cerita dengan cara yang menarik dan penuh emosi.",
+          progress: 0,
+          img: "/image-assets/quest-2.png",
+        },
+        {
+          questNumber: 3,
+          title: "My Passion: Kisah Hobi Favorit Saya",
+          description:
+            "Quest ini bertujuan untuk membantu peserta berlatih berbicara dengan antusiasme dan membuat audiens tertarik dengan topik yang mereka sampaikan.",
+          progress: 0,
+          img: "/image-assets/quest-31.png",
+        },
+      ];
+    case "Menengah":
+      return [
+        {
+          questNumber: 1,
+          title: "Menjelajahi Passion Saya: Menyajikan Topik yang Saya Suka",
+          description:
+            "Tujuannya adalah untuk membantu peserta berbicara dengan antusiasme tentang topik yang mereka sukai.",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+        {
+          questNumber: 2,
+          title: "Mengatasi Ketakutan dan Gagap Bicara",
+          description:
+            "Peserta akan mempelajari teknik-teknik pernapasan dan relaksasi, serta latihan-latihan bicara yang efektif untuk mengurangi ketegangan dan meningkatkan rasa percaya diri.",
+          progress: 0,
+          img: "/image-assets/quest-51.png",
+        },
+        {
+          questNumber: 3,
+          title:
+            "Membawa Kita ke Masa Lalu: Presentasi Sebuah Kejadian Bersejarah",
+          description:
+            "TPeserta diminta untuk memberikan presentasi tentang sebuah kejadian bersejarah dalam waktu 5-7 menit.",
+          progress: 0,
+          img: "/image-assets/quest-61.png",
+        },
+      ];
+    case "Mahir":
+      return [
+        {
+          questNumber: 1,
+          title: "Membuka Pembahasan Kontroversial",
+          description:
+            "Tujuannya adalah untuk membantu peserta berlatih mengikuti tren terbaru di bidang bisnis dan memberikan wawasan yang bermanfaat bagi audiens.",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+        {
+          questNumber: 2,
+          title: "Menganalisis Kebijakan Publik",
+          description:
+            "Tujuannya adalah untuk membantu peserta berlatih merangkum informasi yang kompleks dan memberikan solusi atau pandangan yang bermanfaat bagi audiens.",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+        {
+          questNumber: 3,
+          title: "Inovasi Baru yang Kita Kerjakan",
+          description:
+            "Tujuannya adalah untuk membantu peserta berlatih menjelaskan proyek atau inovasi dengan jelas, termasuk manfaat dan dampaknya bagi masyarakat.",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+      ];
+    case "Pakar":
+      return [
+        {
+          questNumber: 1,
+          title: "Mendalami Topik Teknis di Bidang Anda",
+          description:
+            "Tujuannya adalah untuk membantu peserta berlatih mengkomunikasikan topik teknis dengan jelas dan menarik bagi audiens.",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+        {
+          questNumber: 2,
+          title: "Mengembangkan Strategi Bisnis Inovatif",
+          description:
+            "Peserta diminta untuk memberikan presentasi tentang strategi bisnis inovatif dalam waktu 20-25 menit",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+        {
+          questNumber: 3,
+          title: "Menganalisis Kebijakan Publik di Tingkat Internasional",
+          description:
+            "Peserta diminta untuk memberikan presentasi tentang kebijakan publik di tingkat internasional dalam waktu 20-25 menit",
+          progress: 0,
+          img: "/image-assets/quest-41.png",
+        },
+      ];
+    default:
+      return [];
+  }
 }
