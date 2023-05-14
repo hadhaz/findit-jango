@@ -29,3 +29,7 @@ Jango adalah aplikasi berbasis website yang bertujuan untuk membantu pengguna da
 - **Progress Tracker**: Pengguna dapat melihat perkembangan kemampuan _public speaking_ mereka dari waktu ke waktu.
 
 ![Progress](github/dashboard.png)
+
+## Deployment
+
+[Jango](https://findit-jango.vercel.app/)
