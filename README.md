@@ -20,7 +20,7 @@ Jango adalah aplikasi berbasis website yang bertujuan untuk membantu pengguna da
 
 ![Quest1](github/quest.png)
 
-![Quest2](github/quest3.png)
+![Quest2](github/quest-3.png)
 
 - **Forum**: Pengguna dapat berdiskusi dengan pengguna lainnya mengenai topik maupun hal-hal lain yang berhubungan dengan _public speaking_.
 
