@@ -11,7 +11,7 @@ export default function QuestPage() {
         alt='jango quest'
         width={200}
         height={50}
-        className="mb-6 xl:mb-8"
+        className='mb-6 xl:mb-8'
       />
       {level.map((item: string) => (
         <Quest key={item} level={item} />

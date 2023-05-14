@@ -1,4 +1,4 @@
-import { FeedbackOverview, Quest } from "./types";
+import { FeedbackOverview, Forum, Quest } from "./types";
 
 export async function getMenu() {
   return [
@@ -183,6 +183,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Tujuannya adalah untuk membantu peserta merasa nyaman berbicara di depan umum dan memperkenalkan diri mereka dengan lebih baik.",
           progress: 85,
           img: "/image-assets/quest-1.png",
+          overlay: true,
         },
         {
           questNumber: 2,
@@ -192,6 +193,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Quest ini bertujuan untuk membantu peserta berlatih menyampaikan cerita dengan cara yang menarik dan penuh emosi.",
           progress: 0,
           img: "/image-assets/quest-2.png",
+          overlay: true,
         },
         {
           questNumber: 3,
@@ -200,6 +202,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Quest ini bertujuan untuk membantu peserta berlatih berbicara dengan antusiasme dan membuat audiens tertarik dengan topik yang mereka sampaikan.",
           progress: 0,
           img: "/image-assets/quest-31.png",
+          overlay: false,
         },
       ];
     case "Menengah":
@@ -211,6 +214,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Tujuannya adalah untuk membantu peserta berbicara dengan antusiasme tentang topik yang mereka sukai.",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
         {
           questNumber: 2,
@@ -219,15 +223,17 @@ export function getQuestByLevel(level: string): Quest[] {
             "Peserta akan mempelajari teknik-teknik pernapasan dan relaksasi, serta latihan-latihan bicara yang efektif untuk mengurangi ketegangan dan meningkatkan rasa percaya diri.",
           progress: 0,
           img: "/image-assets/quest-51.png",
+          overlay: true,
         },
         {
           questNumber: 3,
           title:
             "Membawa Kita ke Masa Lalu: Presentasi Sebuah Kejadian Bersejarah",
           description:
-            "TPeserta diminta untuk memberikan presentasi tentang sebuah kejadian bersejarah dalam waktu 5-7 menit.",
+            "Peserta diminta untuk memberikan presentasi tentang sebuah kejadian bersejarah dalam waktu 5-7 menit.",
           progress: 0,
           img: "/image-assets/quest-61.png",
+          overlay: true,
         },
       ];
     case "Mahir":
@@ -239,6 +245,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Tujuannya adalah untuk membantu peserta berlatih mengikuti tren terbaru di bidang bisnis dan memberikan wawasan yang bermanfaat bagi audiens.",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
         {
           questNumber: 2,
@@ -247,6 +254,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Tujuannya adalah untuk membantu peserta berlatih merangkum informasi yang kompleks dan memberikan solusi atau pandangan yang bermanfaat bagi audiens.",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
         {
           questNumber: 3,
@@ -255,6 +263,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Tujuannya adalah untuk membantu peserta berlatih menjelaskan proyek atau inovasi dengan jelas, termasuk manfaat dan dampaknya bagi masyarakat.",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
       ];
     case "Pakar":
@@ -266,6 +275,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Tujuannya adalah untuk membantu peserta berlatih mengkomunikasikan topik teknis dengan jelas dan menarik bagi audiens.",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
         {
           questNumber: 2,
@@ -274,6 +284,7 @@ export function getQuestByLevel(level: string): Quest[] {
             "Peserta diminta untuk memberikan presentasi tentang strategi bisnis inovatif dalam waktu 20-25 menit",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
         {
           questNumber: 3,
@@ -282,9 +293,74 @@ export function getQuestByLevel(level: string): Quest[] {
             "Peserta diminta untuk memberikan presentasi tentang kebijakan publik di tingkat internasional dalam waktu 20-25 menit",
           progress: 0,
           img: "/image-assets/quest-41.png",
+          overlay: true,
         },
       ];
     default:
       return [];
+  }
+}
+
+export default function getForum(): Forum[] {
+  return [
+    {
+      title: "Haruskah Public Speaking Diajarkan di Sekolah?",
+      author: "nitikusmala12",
+      topic: ["Public Speaking", "Pendidikan"],
+      content: "",
+      like: 213,
+      dislike: 50,
+      time: Date.now().toLocaleString(),
+      img: "/image-assets/forum-1.png",
+    },
+    {
+      title: "Menyeimbangkan Kebebasan Berbicara dan Tanggung Jawab",
+      author: "jenniferlaw3",
+      topic: ["Public Speaking", "Orasi"],
+      content: "",
+      like: 150,
+      dislike: 21,
+      time: Date.now().toLocaleString(),
+      img: "/image-assets/forum-2.png",
+    },
+    {
+      title:
+        "Bagaimana Pemimpin Menggunakan Retorika untuk Mempengaruhi Opini Publik",
+      author: "jamaludin22",
+      topic: ["Politik"],
+      content: "",
+      like: 100,
+      dislike: 10,
+      time: Date.now().toLocaleString(),
+      img: "/image-assets/forum-3.png",
+    },
+    {
+      title:
+        "Kekuatan Berbicara di Depan Umum dalam Industri Hiburan: Wawasan dari Para Pemimpin Industri",
+      author: "ajinurzam",
+      topic: ["Tips", "Public Speaking"],
+      content: "",
+      like: 190,
+      dislike: 2,
+      time: Date.now().toLocaleString(),
+      img: "/image-assets/forum-4.png",
+    },
+  ];
+}
+
+export function getColor(topic: string) {
+  switch (topic) {
+    case "Public Speaking":
+      return ["#FFB800", "#000"];
+    case "Pendidikan":
+      return ["#66075D", "#FFF"];
+    case "Orasi":
+      return ["#1860A1", "#FFF"];
+    case "Politik":
+      return ["#A30E0E", "#FFF"];
+    case "Tips":
+      return ["#0D7D18", "#FFF"];
+    default:
+      return ["#FFB800", "#000"];
   }
 }

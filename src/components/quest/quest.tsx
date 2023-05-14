@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import QuestCard from "../card/quest-card";
 import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function Quest({ level }: { level: string }) {
   const [dropdown, setDropdown] = useState<boolean>(false);
@@ -42,6 +43,7 @@ export default function Quest({ level }: { level: string }) {
                 description={item.description}
                 progress={item.progress}
                 questNumber={item.questNumber}
+                overlay={item.overlay}
               ></QuestCard>
             ))}
         </AnimatePresence>

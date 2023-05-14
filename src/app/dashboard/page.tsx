@@ -1,5 +1,7 @@
 import ArticleCollection from "@/components/dashboard/article-collection";
 import Infographic from "@/components/dashboard/infographic";
+import localFont from "next/font/local";
+
 
 export default function Dashboard() {
   return (

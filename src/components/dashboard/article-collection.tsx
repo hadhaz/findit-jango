@@ -22,7 +22,7 @@ export default function ArticleCollection() {
         {articles.map((article: Article) => (
           <div
             key={article.title}
-            className='bg-[#BFE0FF] basis-1/3 p-3 xl:py-5 xl:px-10 rounded-xl relative flex flex-col gap-y-1'
+            className='bg-[#BFE0FF] basis-1/3 p-3 xl:py-5 xl:px-10 rounded-xl relative flex flex-col gap-y-1 xl:text-lg'
           >
             <Image
               src='/image-assets/expand.svg'
@@ -33,9 +33,9 @@ export default function ArticleCollection() {
             />
             <div className="basis-full">
               <h1 className='font-medium max-w-[95%]'>{article.title}</h1>
-              <h2 className="text-sm"><em>Bacaan {article.timeRead} menit</em></h2>
+              <h2 className="text-sm xl:text-base"><em>Bacaan {article.timeRead} menit</em></h2>
             </div>
-            <p className='mt-3 xl:mt-6 text-sm'>{article.detail}</p>
+            <p className='mt-3 xl:mt-6 text-sm xl:text-base'>{article.detail}</p>
           </div>
         ))}
       </div>

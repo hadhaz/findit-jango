@@ -40,7 +40,7 @@ export default function DetailInfographic() {
               />
               <div className='flex flex-col'>
                 <div className='text-sm xl:text-base '>{item.name}</div>
-                <div className='text-xl xl:text-3xl'>{item.score}/10</div>
+                <div className='text-lg xl:text-2xl'>{item.score}/10</div>
               </div>
             </div>
           ))}

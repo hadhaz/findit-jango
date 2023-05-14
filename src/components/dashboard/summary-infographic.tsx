@@ -57,8 +57,8 @@ function InfoCard({
     >
       <div>{title}</div>
       <div className='flex items-center justify-between gap-x-4 mt-1 xl:mt-4'>
-        <div className='flex items-end gap-x-1 md:text-lg lg:text-xl'>
-          <span className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl'>
+        <div className='flex items-end gap-x-1 text-sm md:text-base lg:text-lg'>
+          <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl'>
             {value}
           </span>
           <span>{unit}</span>

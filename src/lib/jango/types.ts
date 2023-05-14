@@ -50,8 +50,7 @@ export type FeedbackOverview = {
   slug: string;
 };
 
-export type QuestLevel = "Pemula" | "Menengah" | "Mahir" | "Expert" | string
-
+export type QuestLevel = "Pemula" | "Menengah" | "Mahir" | "Expert" | string;
 
 export type Quest = {
   questNumber: number;
@@ -59,5 +58,16 @@ export type Quest = {
   description: string;
   progress: number;
   img: string;
+  overlay: boolean;
 };
 
+export type Forum = {
+  title: string;
+  author: string;
+  time: string;
+  dislike: number;
+  like: number;
+  content: string;
+  topic: string[];
+  img: string;
+};

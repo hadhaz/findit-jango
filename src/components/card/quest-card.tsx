@@ -1,6 +1,7 @@
 import { Quest } from "@/lib/jango/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function QuestCard({
   description,
@@ -8,13 +9,29 @@ export default function QuestCard({
   progress,
   questNumber,
   title,
+  overlay,
 }: Quest) {
+  const router = useRouter();
+
+  const directHandler = () => {
+    router.push(
+      `/dashboard/quest/${title
+        .replaceAll(" ", "-")
+        .toLowerCase()
+        .replaceAll("?", "")
+        .replaceAll(".", "")
+        .replaceAll(":", "")
+        .replaceAll("!", "")}`
+    );
+  };
+
   return (
     <motion.div
+      onClick={directHandler}
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: -10, opacity: 0 }}
-      className='relative md:h-[20vh] w-full rounded-xl overflow-hidden'
+      className='relative md:h-[24vh] w-full rounded-xl overflow-hidden'
     >
       <Image
         src={img}
@@ -23,25 +40,32 @@ export default function QuestCard({
         quality={100}
         className='object-cover'
       />
-      <div className='absolute flex w-full bg-overlay h-full items-end p-4'>
+      <div
+        style={{
+          backgroundImage: overlay
+            ? "linear-gradient(to bottom, rgba(255,255,255,0.15) 30%, rgba(255, 255, 255, .3) 50%, rgba(255, 255, 255, 0.45) 100%"
+            : "rgba(0,0,0,0)",
+        }}
+        className='absolute flex w-full h-full items-end p-4'
+      >
         <div className='basis-[80%]'>
-          <h2 className='text-lg xl:text-xl'>Quest {questNumber}</h2>
-          <h1 className='text-xl xl:text-2xl font-medium max-w-[80%]'>
+          <h2 className='text xl:text-lg'>Quest {questNumber}</h2>
+          <h1 className='text-lg xl:text-xl font-medium max-w-[80%]'>
             {title}
           </h1>
-          <p className='max-w-[75%]'>{description}</p>
+          <p className='max-w-[75%] xl:text-base text-sm'>{description}</p>
         </div>
         <div className='border-l-4 py-2 px-4 xl:px-6'>
           {progress > 0 ? (
             <div className='flex gap-x-2 items-center'>
-              <span className='text-2xl xl:text-3xl font-medium'>
+              <span className='text-xl xl:text-2xl font-medium'>
                 {progress} %
               </span>
               <span>Selesai</span>
             </div>
           ) : (
             <div>
-              <h3>Quest {questNumber}</h3>
+              <h3 className='font-medium'>Quest {questNumber}</h3>
               <p>Belum diselesaikan</p>
             </div>
           )}
